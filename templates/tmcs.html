@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}TMCs - Concertiv Travel Ops Portal{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1><i class="fas fa-building me-2"></i>Travel Management Companies</h1>
+    <a href="{{ url_for('add_tmc') }}" class="btn btn-primary">
+        <i class="fas fa-plus me-1"></i>Add New TMC
+    </a>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Contact Name</th>
+                        <th>Contact Email</th>
+                        <th>Outreach Channel</th>
+                        <th>Status</th>
+                        <th>Created At</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tmc in tmcs %}
+                    <tr>
+                        <td><strong>{{ tmc.name }}</strong></td>
+                        <td>{{ tmc.contact_name }}</td>
+                        <td>
+                            <a href="mailto:{{ tmc.contact_email }}">{{ tmc.contact_email }}</a>
+                        </td>
+                        <td>
+                            <span class="badge {% if tmc.outreach_channel == 'email' %}bg-primary{% else %}bg-info{% endif %}">
+                                {{ tmc.outreach_channel.title() }}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="badge {% if tmc.active %}bg-success{% else %}bg-secondary{% endif %}">
+                                {% if tmc.active %}Active{% else %}Inactive{% endif %}
+                            </span>
+                        </td>
+                        <td>{{ tmc.created_at.strftime('%Y-%m-%d') }}</td>
+                        <td>
+                            <div class="btn-group btn-group-sm" role="group">
+                                <a href="{{ url_for('edit_tmc', tmc_id=tmc.id) }}" class="btn btn-outline-primary">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <form method="POST" action="{{ url_for('delete_tmc', tmc_id=tmc.id) }}" style="display: inline;">
+                                    <button type="submit" class="btn btn-outline-danger" 
+                                            onclick="return confirm('Are you sure you want to delete this TMC?')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% if tmcs|length == 0 %}
+<div class="text-center mt-5">
+    <i class="fas fa-building fa-5x text-muted mb-3"></i>
+    <h3 class="text-muted">No TMCs found</h3>
+    <p class="text-muted">Add your first TMC to get started with data collection.</p>
+    <a href="{{ url_for('add_tmc') }}" class="btn btn-primary">
+        <i class="fas fa-plus me-1"></i>Add New TMC
+    </a>
+</div>
+{% endif %}
+{% endblock %}

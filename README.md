@@ -1,90 +1,225 @@
-# Welcome to GitHub
+# Concertiv Travel Ops Portal
 
-Welcome to GitHub—where millions of developers work together on software. Ready to get started? Let’s learn how this all works by building and publishing your first GitHub Pages website!
+A comprehensive web application for managing monthly travel data collection from Travel Management Companies (TMCs) and performing hotel price audits with savings calculations.
 
-## Repositories
+## Features
 
-Right now, we’re in your first GitHub **repository**. A repository is like a folder or storage space for your project. Your project's repository contains all its files such as code, documentation, images, and more. It also tracks every change that you—or your collaborators—make to each file, so you can always go back to previous versions of your project if you make any mistakes.
+### Core Functionality
+- **Monthly Travel Data Collection**: Automated email-based data requests to 13+ TMCs
+- **Request Tracking**: End-to-end status monitoring with automated follow-ups
+- **Mailbox Integration**: Automatic ingestion of Excel/CSV attachments from email replies
+- **Dashboard Analytics**: Real-time KPIs and status reporting
+- **Hotel Audit System**: Rate comparison and savings calculation with 25% gain-share
 
-This repository contains three important files: The HTML code for your first website on GitHub, the CSS stylesheet that decorates your website with colors and fonts, and the **README** file. It also contains an image folder, with one image file.
+### Key Capabilities
+- ✅ Send templated data-request emails to TMCs
+- ✅ Track request status (Pending, Sent, Received, Failed)
+- ✅ Automated 48-hour follow-up system
+- ✅ Excel/CSV attachment parsing and validation
+- ✅ Comprehensive dashboard with metrics and tables
+- ✅ Hotel rate audit with savings calculations
+- ✅ TMC management (add, edit, delete, activate/deactivate)
+- ✅ Monthly cycle creation and management
+- ✅ Real-time status updates and notifications
 
-## Describe your project
+## Quick Start
 
-You are currently viewing your project's **README** file. **_README_** files are like cover pages or elevator pitches for your project. They are written in plain text or [Markdown language](https://guides.github.com/features/mastering-markdown/), and usually include a paragraph describing the project, directions on how to use it, who authored it, and more.
+### Prerequisites
+- Python 3.8+
+- Gmail account with App Password (for email functionality)
 
-[Learn more about READMEs](https://help.github.com/en/articles/about-readmes)
+### Installation
 
-## Your first website
+1. **Clone and setup the project:**
+   ```bash
+   cd /workspace
+   pip install -r requirements.txt
+   ```
 
-**GitHub Pages** is a free and easy way to create a website using the code that lives in your GitHub repositories. You can use GitHub Pages to build a portfolio of your work, create a personal website, or share a fun project that you coded with the world. GitHub Pages is automatically enabled in this repository, but when you create new repositories in the future, the steps to launch a GitHub Pages website will be slightly different.
+2. **Configure email settings:**
+   ```bash
+   export MAIL_USERNAME="your-email@gmail.com"
+   export MAIL_PASSWORD="your-app-password"
+   ```
 
-[Learn more about GitHub Pages](https://pages.github.com/)
+3. **Initialize the database:**
+   ```bash
+   python init_db.py
+   ```
 
-## Rename this repository to publish your site
+4. **Run the application:**
+   ```bash
+   python app.py
+   ```
 
-We've already set-up a GitHub Pages website for you, based on your personal username. This repository is called `hello-world`, but you'll rename it to: `username.github.io`, to match your website's URL address. If the first part of the repository doesn’t exactly match your username, it won’t work, so make sure to get it right.
+5. **Access the portal:**
+   Open http://localhost:5000 in your browser
 
-Let's get started! To update this repository’s name, click the `Settings` tab on this page. This will take you to your repository’s settings page. 
+## Usage Guide
 
-![repo-settings-image](https://user-images.githubusercontent.com/18093541/63130482-99e6ad80-bf88-11e9-99a1-d3cf1660b47e.png)
+### 1. TMC Management
+- Navigate to **TMCs** to manage your Travel Management Companies
+- Add new TMCs with contact information and outreach preferences
+- Set TMCs as active/inactive to control which ones receive requests
 
-Under the **Repository Name** heading, type: `username.github.io`, where username is your username on GitHub. Then click **Rename**—and that’s it. When you’re done, click your repository name or browser’s back button to return to this page.
+### 2. Monthly Cycle Creation
+- Go to **Create Cycle** to start a new monthly data collection
+- Select the target month
+- System creates requests for all active TMCs automatically
 
-<img width="1039" alt="rename_screenshot" src="https://user-images.githubusercontent.com/18093541/63129466-956cc580-bf85-11e9-92d8-b028dd483fa5.png">
+### 3. Sending Data Requests
+- From the **Dashboard**, click "Send All Requests" for your selected month
+- System sends templated emails to all TMC contacts
+- Each request gets a unique tracking ID for reply matching
 
-Once you click **Rename**, your website will automatically be published at: https://your-username.github.io/. The HTML file—called `index.html`—is rendered as the home page and you'll be making changes to this file in the next step.
+### 4. Monitoring Progress
+- **Dashboard** shows real-time KPIs:
+  - Total Requests
+  - Received
+  - Pending
+  - Follow-ups Sent
+  - Overdue count
+- Status table shows per-TMC progress with timestamps
+- Attachments table displays received files with parsing status
 
-Congratulations! You just launched your first GitHub Pages website. It's now live to share with the entire world
+### 5. Automated Follow-ups
+- System automatically sends follow-up emails 48 hours after initial request
+- Manual follow-ups available via "Follow-up Overdue" button
+- Follow-up counter tracks escalation attempts
 
-## Making your first edit
+### 6. Mailbox Integration
+- Click "Scan Mailbox" to manually check for new replies
+- System automatically scans every 10 minutes
+- Excel/CSV attachments are automatically processed and linked to requests
 
-When you make any change to any file in your project, you’re making a **commit**. If you fix a typo, update a filename, or edit your code, you can add it to GitHub as a commit. Your commits represent your project’s entire history—and they’re all saved in your project’s repository.
+### 7. Hotel Audit & Savings
+- Navigate to **Hotel Audit** for Phase 2 functionality
+- Upload Excel/CSV files with hotel rate data
+- System calculates:
+  - Best Available Rate (min of TMC and public rates)
+  - Savings (Best Available - Concertiv rate)
+  - Gain Share (25% of savings)
+- View top performing hotels and total savings metrics
 
-With each commit, you have the opportunity to write a **commit message**, a short, meaningful comment describing the change you’re making to a file. So you always know exactly what changed, no matter when you return to a commit.
+## Email Configuration
 
-## Practice: Customize your first GitHub website by writing HTML code
+### Gmail Setup
+1. Enable 2-Factor Authentication on your Google account
+2. Generate an App Password:
+   - Go to Google Account settings
+   - Security → 2-Step Verification → App passwords
+   - Generate password for "Mail"
+3. Use the generated password as `MAIL_PASSWORD`
 
-Want to edit the site you just published? Let’s practice commits by introducing yourself in your `index.html` file. Don’t worry about getting it right the first time—you can always build on your introduction later.
+### Email Templates
 
-Let’s start with this template:
-
+**Initial Request:**
 ```
-<p>Hello World! I’m [username]. This is my website!</p>
+Subject: Concertiv Monthly Travel Data Request — [Month Year]
+
+Hi [Contact Name],
+Kindly share the [Month Year] travel data using the attached template or your standard export.
+Requested by: [Due Date]. If already sent, please ignore.
+
+Thank you,
+Concertiv Operations
+(Reference: REQ-ID: [Request ID])
 ```
 
-To add your introduction, copy our template and click the edit pencil icon at the top right hand corner of the `index.html` file.
-
-<img width="997" alt="edit-this-file" src="https://user-images.githubusercontent.com/18093541/63131820-0794d880-bf8d-11e9-8b3d-c096355e9389.png">
-
-
-Delete this placeholder line:
-
+**Follow-up:**
 ```
-<p>Welcome to your first GitHub Pages website!</p>
+Subject: Reminder — Travel Data Request [Month Year] (Pending)
+
+Hi [Contact Name],
+Quick reminder: we're awaiting the [Month Year] travel data.
+Please reply with the Excel file attached.
+
+Thank you!
 ```
 
-Then, paste the template to line 15 and fill in the blanks.
+## Data Formats
 
-<img width="1032" alt="edit-githuboctocat-index" src="https://user-images.githubusercontent.com/18093541/63132339-c3a2d300-bf8e-11e9-8222-59c2702f6c42.png">
+### Hotel Audit Upload
+Expected columns in Excel/CSV:
+- `hotel_name`: Hotel name
+- `location`: Hotel location
+- `concertiv_rate`: Concertiv negotiated rate
+- `tmc_rate`: TMC quoted rate  
+- `public_rate`: Public/rack rate
 
+### TMC Data Attachments
+- Supports `.xlsx`, `.xls`, and `.csv` files
+- Basic validation includes row/column counting
+- Parse errors are logged but don't prevent "Received" status
 
-When you’re done, scroll down to the `Commit changes` section near the bottom of the edit page. Add a short message explaining your change, like "Add my introduction", then click `Commit changes`.
+## Architecture
 
+### Backend (Flask)
+- **Models**: TMC, DataRequest, Attachment, HotelAuditRow
+- **Services**: EmailService for sending and ingesting emails
+- **Scheduler**: APScheduler for automated follow-ups and mailbox scanning
+- **Database**: SQLite with SQLAlchemy ORM
 
-<img width="1030" alt="add-my-username" src="https://user-images.githubusercontent.com/18093541/63131801-efbd5480-bf8c-11e9-9806-89273f027d16.png">
+### Frontend (Bootstrap 5)
+- Responsive design with modern UI components
+- Real-time updates and interactive dashboards
+- Form validation and file upload handling
+- Toast notifications and loading states
 
-Once you click `Commit changes`, your changes will automatically be published on your GitHub Pages website. Refresh the page to see your new changes live in action.
+### Key Components
+- **Dashboard**: Main analytics and control center
+- **TMC Management**: CRUD operations for travel companies
+- **Cycle Management**: Monthly workflow initiation
+- **Email Integration**: SMTP sending and IMAP ingestion
+- **File Processing**: Excel/CSV parsing with pandas
+- **Audit System**: Hotel rate analysis and savings calculation
 
-:tada: You just made your first commit! :tada:
+## Business Rules
 
-## Extra Credit: Keep on building!
+1. **One Request Per TMC Per Month**: Prevents duplicate requests
+2. **48-Hour Follow-up Window**: Automated escalation timing
+3. **Request Status Flow**: Pending → Sent → Received (or Failed)
+4. **Attachment Requirement**: Request marked "Received" only with valid file
+5. **Overdue Definition**: Past due date without received status
+6. **Savings Calculation**: Best Available Rate - Concertiv Rate (if positive)
+7. **Gain Share**: 25% of calculated savings
 
-Change the placeholder Octocat gif on your GitHub Pages website by [creating your own personal Octocat emoji](https://myoctocat.com/build-your-octocat/) or [choose a different Octocat gif from our logo library here](https://octodex.github.com/). Add that image to line 12 of your `index.html` file, in place of the `<img src=` link.
+## API Endpoints
 
-Want to add even more code and fun styles to your GitHub Pages website? [Follow these instructions](https://github.com/github/personal-website) to build a fully-fledged static website.
+- `GET /` - Dashboard with KPIs and tables
+- `GET /tmcs` - TMC management interface
+- `POST /tmcs/add` - Add new TMC
+- `GET|POST /tmcs/<id>/edit` - Edit TMC
+- `POST /tmcs/<id>/delete` - Delete TMC
+- `GET|POST /create_cycle` - Create monthly cycle
+- `GET /send_all/<month>` - Send all requests for month
+- `GET /follow_up_overdue/<month>` - Send follow-up emails
+- `GET /scan_mailbox` - Manual mailbox scan
+- `GET /hotel_audit` - Hotel audit dashboard
+- `POST /upload_hotel_data` - Upload hotel rate data
 
-![octocat](./images/create-octocat.png)
+## Deployment
 
-## Everything you need to know about GitHub
+### Production Considerations
+1. **Database**: Migrate from SQLite to PostgreSQL/MySQL
+2. **Email**: Configure production SMTP server
+3. **Security**: Add authentication and authorization
+4. **Monitoring**: Implement logging and error tracking
+5. **Scaling**: Add Redis for session management and caching
 
-Getting started is the hardest part. If there’s anything you’d like to know as you get started with GitHub, try searching [GitHub Help](https://help.github.com). Our documentation has tutorials on everything from changing your repository settings to configuring GitHub from your command line.
+### Environment Variables
+```bash
+MAIL_USERNAME=your-email@domain.com
+MAIL_PASSWORD=your-secure-password
+FLASK_ENV=production
+DATABASE_URL=postgresql://user:pass@host/db
+SECRET_KEY=your-secret-key
+```
+
+## Support
+
+For technical support or feature requests, please refer to the application logs and error messages. The system includes comprehensive error handling and user feedback mechanisms.
+
+## License
+
+Internal use only - Concertiv Travel Operations Portal

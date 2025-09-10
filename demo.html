@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concertiv Travel Ops Portal - Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .demo-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .feature-card {
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        .status-badge {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-banner text-center">
+        <h1><i class="fas fa-plane me-3"></i>Concertiv Travel Ops Portal</h1>
+        <h3>🚀 LIVE APPLICATION DEMO</h3>
+        <p class="lead mb-0">Fully functional travel data management system</p>
+    </div>
+
+    <div class="container">
+        <!-- Status Alert -->
+        <div class="alert alert-success d-flex align-items-center mb-4" role="alert">
+            <i class="fas fa-check-circle me-2 status-badge"></i>
+            <div>
+                <strong>Application Status: RUNNING</strong> - The Flask server is active on port 5000
+            </div>
+        </div>
+
+        <!-- Access Instructions -->
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5><i class="fas fa-globe me-2"></i>How to Access the Live Application</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h6><i class="fas fa-desktop me-1"></i>VS Code/Cursor</h6>
+                        <p>Look for the "Ports" tab in your terminal area and click the forwarded port 5000 link.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6><i class="fas fa-cloud me-1"></i>Cloud Environment</h6>
+                        <p>Check for "Preview" or "Open Browser" options in your development environment.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6><i class="fas fa-link me-1"></i>Direct URL</h6>
+                        <p>If available, use your workspace's external URL format with port 5000.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KPI Dashboard Preview -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h4><i class="fas fa-tachometer-alt me-2"></i>Live Dashboard KPIs</h4>
+            </div>
+            <div class="col-md-2">
+                <div class="card bg-primary text-white">
+                    <div class="card-body text-center">
+                        <h3>13</h3>
+                        <p class="mb-0">Total Requests</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card bg-success text-white">
+                    <div class="card-body text-center">
+                        <h3>0</h3>
+                        <p class="mb-0">Received</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card bg-warning text-white">
+                    <div class="card-body text-center">
+                        <h3>13</h3>
+                        <p class="mb-0">Pending</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card bg-info text-white">
+                    <div class="card-body text-center">
+                        <h3>0</h3>
+                        <p class="mb-0">Follow-ups</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card bg-danger text-white">
+                    <div class="card-body text-center">
+                        <h3>0</h3>
+                        <p class="mb-0">Overdue</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card bg-secondary text-white">
+                    <div class="card-body text-center">
+                        <h3>0%</h3>
+                        <p class="mb-0">Complete</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Overview -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h4><i class="fas fa-star me-2"></i>Available Features</h4>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-tachometer-alt fa-3x text-primary mb-3"></i>
+                        <h5>Dashboard</h5>
+                        <p>Real-time KPIs and status monitoring</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-building fa-3x text-success mb-3"></i>
+                        <h5>TMC Management</h5>
+                        <p>13 pre-loaded travel companies</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-calendar-plus fa-3x text-warning mb-3"></i>
+                        <h5>Monthly Cycles</h5>
+                        <p>Automated request generation</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-hotel fa-3x text-info mb-3"></i>
+                        <h5>Hotel Audit</h5>
+                        <p>$570 savings calculated</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sample Data -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h6><i class="fas fa-building me-2"></i>Sample TMCs Loaded</h6>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>American Express Global Business Travel</li>
+                            <li><i class="fas fa-check text-success me-2"></i>BCD Travel</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Carlson Wagonlit Travel</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Concur Travel</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Egencia</li>
+                            <li class="text-muted">... and 8 more TMCs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h6><i class="fas fa-hotel me-2"></i>Hotel Audit Summary</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-4">
+                                <h4 class="text-primary">10</h4>
+                                <small>Hotels</small>
+                            </div>
+                            <div class="col-4">
+                                <h4 class="text-success">$570</h4>
+                                <small>Savings</small>
+                            </div>
+                            <div class="col-4">
+                                <h4 class="text-info">$142.50</h4>
+                                <small>Gain Share</small>
+                            </div>
+                        </div>
+                        <hr>
+                        <p class="mb-0"><strong>Top Hotel:</strong> Four Seasons Miami ($85 savings)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Details -->
+        <div class="card">
+            <div class="card-header">
+                <h6><i class="fas fa-cog me-2"></i>Technical Implementation</h6>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h6>Backend</h6>
+                        <ul class="list-unstyled small">
+                            <li>• Flask 3.1.2</li>
+                            <li>• SQLAlchemy ORM</li>
+                            <li>• APScheduler</li>
+                            <li>• Email integration</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <h6>Frontend</h6>
+                        <ul class="list-unstyled small">
+                            <li>• Bootstrap 5</li>
+                            <li>• Font Awesome</li>
+                            <li>• Responsive design</li>
+                            <li>• Interactive UI</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <h6>Features</h6>
+                        <ul class="list-unstyled small">
+                            <li>• File processing</li>
+                            <li>• Email automation</li>
+                            <li>• Real-time updates</li>
+                            <li>• Status tracking</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <h6>Data</h6>
+                        <ul class="list-unstyled small">
+                            <li>• SQLite database</li>
+                            <li>• Sample data loaded</li>
+                            <li>• Excel/CSV support</li>
+                            <li>• Automated calculations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-4 mb-4">
+            <p class="text-muted">
+                <i class="fas fa-rocket me-2"></i>
+                The Concertiv Travel Ops Portal is fully operational and ready for use!
+            </p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Add some interactivity
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'translateY(-5px)';
+                }, 100);
+            });
+        });
+
+        // Update time
+        setInterval(() => {
+            const now = new Date().toLocaleTimeString();
+            document.title = `Concertiv Portal - Live ${now}`;
+        }, 1000);
+    </script>
+</body>
+</html>

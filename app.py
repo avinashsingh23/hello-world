@@ -553,4 +553,8 @@ def upload_hotel_data():
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    print("🚀 Starting Concertiv Travel Ops Portal...")
+    print("📍 Server will be accessible at: http://0.0.0.0:5000")
+    print("🌐 External access: Check your environment's port forwarding")
+    print("✨ Application loaded with 13 TMCs and sample data")
+    app.run(debug=True, host='0.0.0.0', port=5000, threaded=True)
